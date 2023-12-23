@@ -9,7 +9,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -22,14 +25,20 @@ public class UserController {
     @PostMapping("/user")
     public ResponseEntity<User> createUser(@RequestBody @Valid User user) {
         User created = userService.create(user);
-        if (null != created) {
-            return new ResponseEntity<>(user, HttpStatus.CREATED);
-        }
-        throw new NullPointerException();
+        return new ResponseEntity<>(user, HttpStatus.CREATED);
     }
 
     @GetMapping("/list")
     public List<User> getUsers() {
         return userService.getUsers();
+    }
+
+    @DeleteMapping("/user/{username}")
+    public ResponseEntity<Map<String, String>> deleteUser(@PathVariable String username) {
+        userService.delete(username);
+        Map<String, String> response = new HashMap<>();
+        response.put("username", username);
+        response.put("status", "Deleted successfully!");
+        return ResponseEntity.ok(response);
     }
 }
