@@ -1,4 +1,4 @@
-package antifraud;
+package antifraud.controller;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Positive;
