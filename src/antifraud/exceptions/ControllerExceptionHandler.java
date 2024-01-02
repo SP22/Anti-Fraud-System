@@ -1,7 +1,5 @@
-package antifraud;
+package antifraud.exceptions;
 
-import antifraud.exceptions.DuplicateUserException;
-import antifraud.exceptions.UserNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -17,5 +15,10 @@ public class ControllerExceptionHandler {
     @ExceptionHandler(UserNotFoundException.class)
     public ResponseEntity<Void> handleUserNotFoundException() {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(UnsupportedRoleException.class)
+    public ResponseEntity<Void> handleUnsupportedRoleException() {
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 }

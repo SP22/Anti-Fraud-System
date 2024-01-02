@@ -1,21 +1,21 @@
-package antifraud;
+package antifraud.entity;
 
-import antifraud.entity.User;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
 
 public class UserAdapter implements UserDetails {
-    private User user;
+    private final User user;
 
     public UserAdapter(User user) {
         this.user = user;
     }
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of();
+        return List.of(new SimpleGrantedAuthority("ROLE_" + user.getRole()));
     }
 
     @Override
@@ -35,7 +35,7 @@ public class UserAdapter implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return true;
+        return !user.isLocked();
     }
 
     @Override

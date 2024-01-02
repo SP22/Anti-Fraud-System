@@ -1,6 +1,6 @@
 package antifraud.service;
 
-import antifraud.UserAdapter;
+import antifraud.entity.UserAdapter;
 import antifraud.entity.User;
 import antifraud.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

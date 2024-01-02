@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/antifraud")
 @Validated
 public class Controller {
-    @PostMapping("/transaction")
+    @PostMapping(value = {"/transaction", "/transaction/"})
     public ResponseEntity<TransactionResponse> processTransaction(@RequestBody @Valid TransactionRequest request) {
         long amount = request.amount();
         String status;

@@ -28,5 +28,10 @@ public class User {
     @NotBlank
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
+
+    private String role;
+
+    @JsonIgnore
+    private boolean locked;
 }
 
