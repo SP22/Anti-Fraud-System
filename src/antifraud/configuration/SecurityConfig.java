@@ -30,6 +30,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.PUT, "/api/auth/**").hasRole("ADMINISTRATOR")
                         .requestMatchers(HttpMethod.GET, "/api/auth/list").hasAnyRole("SUPPORT", "ADMINISTRATOR")
                         .requestMatchers(HttpMethod.DELETE, "/api/auth/user/**").hasRole("ADMINISTRATOR")
+                        .requestMatchers("/api/antifraud/**").hasRole("SUPPORT")
                         .requestMatchers("/error").permitAll()
                         .anyRequest().authenticated()
                 )
