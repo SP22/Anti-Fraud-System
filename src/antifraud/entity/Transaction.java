@@ -1,5 +1,6 @@
 package antifraud.entity;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
@@ -17,7 +18,7 @@ import java.time.LocalDateTime;
 public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long transactionId;
 
     @Positive
     private long amount;
@@ -31,4 +32,10 @@ public class Transaction {
     private Region region;
 
     private LocalDateTime date;
+
+    @Enumerated(value = EnumType.STRING)
+    private TransactionResult result;
+
+    @Nullable
+    private String feedback = "";
 }

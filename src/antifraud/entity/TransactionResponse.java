@@ -1,4 +1,4 @@
 package antifraud.entity;
 
-public record TransactionResponse(String result, String info) {
+public record TransactionResponse(TransactionResult result, String info) {
 }

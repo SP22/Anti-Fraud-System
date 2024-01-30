@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public interface TransactionRepository extends JpaRepository<Transaction, Long> {
 
@@ -14,4 +15,6 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
 
     @Query("SELECT count(distinct u.region) FROM Transaction u WHERE u.number = ?1 and u.region <> ?2 and u.date > ?3 and u.date <= ?4")
     Integer countRegions(String number, Region region, LocalDateTime date, LocalDateTime transactionDate);
+
+    List<Transaction> findAllByNumber(String number);
 }

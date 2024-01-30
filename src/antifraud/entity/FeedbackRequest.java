@@ -1,4 +1,3 @@
 package antifraud.entity;
 
-public class FeedbackRequest {
-}
+public record FeedbackRequest(Long transactionId, TransactionResult feedback) {}
